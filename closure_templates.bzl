@@ -1,3 +1,18 @@
+# Compiles the provided Soy files into JavaScript files. Each Soy file in the
+# srcs attribute will have a corresponding .soy.js file in the output.
+#
+# This rule expects the SoyToJsSrcCompiler.jar to be provided in a //tools/
+# directory in a Bazel filegroup rule called "soy_js_compiler".
+#
+# Arguments:
+#   - name: string, The name of this rule.
+#   - srcs: list of string, List of Soy source files.
+#   - should_provide_require_soy_namespaces: bool, Whether to output
+#     goog.provide and goog.require statements for each namespace in a Soy file.
+#     This is useful when used in conjunction with the Closure Library and
+#     Closure Compiler. Defaults to True.
+#   - visibility: list of string, List of Bazel packages that this rule is
+#     visible to.
 def soy_library(
     name,
     srcs,
